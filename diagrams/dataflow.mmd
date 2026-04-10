@@ -1,0 +1,32 @@
+flowchart LR
+    subgraph TB1[Trust Boundary 1: Sensor Domain]
+        Camera[External Process: Camera Sensor]
+        Radar[External Process: Radar Sensor]
+    end
+
+    subgraph TB2[Trust Boundary 2: Vehicle Compute Domain]
+        ECU[Process: ADAS ECU]
+        Eth[Process: Vehicle Ethernet Network]
+        TCU[Process: Telematics Control Unit]
+    end
+
+    subgraph TB3[Trust Boundary 3: Cloud Service Domain]
+        Cloud[Process: Cloud Backend]
+        Telemetry[(Data Store: Telemetry Store)]
+        Identity[(Data Store: Identity and Audit Store)]
+    end
+
+    subgraph TB4[Trust Boundary 4: User Device Domain]
+        Mobile[External Process: Mobile App]
+    end
+
+    Camera -->|Sensor frames| ECU
+    Radar -->|Target detections| ECU
+    ECU -->|ADAS status and diagnostics| Eth
+    Eth -->|Selected telemetry| TCU
+    TCU -->|Device-authenticated TLS session| Cloud
+    Cloud -->|Write vehicle telemetry| Telemetry
+    Cloud -->|Write audit and identity data| Identity
+    Mobile -->|User-authenticated TLS API requests| Cloud
+    Cloud -->|Vehicle state and account responses| Mobile
+    Cloud -->|Authorized remote service requests| TCU

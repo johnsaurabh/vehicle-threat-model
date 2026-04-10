@@ -1,0 +1,15 @@
+flowchart LR
+    Camera[Camera Sensor<br/>S: spoofed imagery<br/>T: calibration tampering<br/>D: sensor blinding]
+    Radar[Radar Sensor<br/>S: false returns<br/>T: config tampering<br/>D: radar jamming]
+    ECU[ADAS ECU<br/>S: rogue node inputs<br/>T: runtime/config tampering<br/>E: privileged code execution]
+    Eth[Vehicle Ethernet<br/>S: fake node identity<br/>T: replay or message injection<br/>D: bandwidth flooding]
+    TCU[Telematics Unit<br/>S: rogue backend/client identity<br/>T: remote payload tampering<br/>E: remote service exploit]
+    Cloud[Cloud Backend<br/>S: fake user/device identity<br/>T: API or data manipulation<br/>E: broken authorization]
+    Mobile[Mobile App<br/>S: token theft<br/>T: client request tampering<br/>E: privilege abuse through API]
+
+    Camera --> ECU
+    Radar --> ECU
+    ECU --> Eth
+    Eth --> TCU
+    TCU <-->|TLS| Cloud
+    Mobile <-->|TLS| Cloud
