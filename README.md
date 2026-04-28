@@ -4,7 +4,7 @@
 
 This repository contains a complete threat modeling and risk assessment package for a simulated connected vehicle / ADAS platform. The project models a realistic vehicle-side and cloud-connected architecture spanning sensors, in-vehicle compute, Ethernet-based communication, telematics, mobile access, and backend services. It is structured as a security engineering deliverable rather than a generic academic exercise.
 
-The objective is to demonstrate system-level security thinking across architecture definition, data flow analysis, STRIDE-based threat identification, risk assessment, and mitigation planning for a modern connected vehicle environment.
+The objective is to document system-level security analysis across architecture definition, data flow analysis, STRIDE-based threat identification, risk assessment, and mitigation planning for a modern connected vehicle environment.
 
 ## Scope
 
@@ -51,7 +51,7 @@ Each of these boundaries introduces different security concerns such as spoofed 
 
 ## Security Objectives
 
-The threat model is built around the following security goals:
+The threat model uses the following security goals:
 
 - preserve integrity of ADAS-relevant sensor and decision data
 - restrict unauthorized control or configuration changes
@@ -70,6 +70,13 @@ This project applies:
 - STRIDE threat modeling
 - qualitative likelihood and impact scoring
 - mitigation mapping to threats and components
+
+## Tech Stack
+
+- Markdown for security documentation
+- Mermaid for architecture, data-flow, and threat-overlay diagrams
+- STRIDE for threat categorization
+- Qualitative likelihood and impact scoring for risk assessment
 
 ## How To Read This Project
 
@@ -96,9 +103,3 @@ These diagrams are written in Mermaid so they render directly on GitHub and rema
 - integrity protection for ADAS data pipelines
 - defense in depth across vehicle, cloud, and mobile surfaces
 - disciplined logging and traceability for forensic and operational review
-
-## Resume-Ready Project Bullets
-
-- Built a complete threat modeling and risk assessment package for a connected vehicle / ADAS platform spanning sensors, ECU processing, in-vehicle Ethernet, telematics, cloud APIs, and mobile access.
-- Applied STRIDE across vehicle, backend, and mobile trust boundaries to identify spoofing, tampering, information disclosure, denial-of-service, repudiation, and privilege escalation risks with component-level mitigation mapping.
-- Produced GitHub-ready security engineering deliverables including Mermaid architecture and DFD diagrams, attack-surface analysis, prioritized risk assessment, and secure design recommendations covering TLS, access control, logging, segmentation, and cryptographic protections.
